@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #FAFBF9;
+    --color-surface: #FFFFFF;
+    --color-muted: #F4F6F2;
+    --color-charcoal: #11181C;
+    --color-text-muted: #5A636A;
+    --color-lime: #B6F05C;
+    --color-border: #E2E6DF;
+  }
+
+  body {
+    background-color: #FAFBF9;
+    color: #11181C;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code, kbd, samp, pre, .font-mono {
+    font-feature-settings: normal;
+  }
+
+  /* Support reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Enode minimal scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #FAFBF9;
+}
+::-webkit-scrollbar-thumb {
+  background: #D5DAD1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B6F05C;
+}
+
+/* Enode subtle grid lines */
+.bg-grid-enode {
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, rgba(17, 24, 28, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 24, 28, 0.03) 1px, transparent 1px);
+}
+
+/* Enode frosted glass */
+.glass-header {
+  background: rgba(250, 251, 249, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(17, 24, 28, 0.06);
+}
+
+/* Keyboard accessibility & focus rings */
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #11181C;
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATION KEYFRAMES
+═══════════════════════════════════════════ */
+
+/* Floating orb - slow drift */
+@keyframes float-slow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -20px) scale(1.05); }
+  50% { transform: translate(-10px, 20px) scale(0.95); }
+  75% { transform: translate(-30px, -10px) scale(1.02); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-20px, 30px) scale(1.03); }
+  50% { transform: translate(20px, -15px) scale(0.97); }
+  75% { transform: translate(10px, 25px) scale(1.01); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.15; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+/* Fade in down for pills */
+@keyframes fade-in-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ping animations for play button */
+@keyframes ping-slow {
+  0% { transform: scale(1); opacity: 0.3; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes ping-slower {
+  0% { transform: scale(1); opacity: 0.2; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Gradient shift */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATION UTILITY CLASSES
+═══════════════════════════════════════════ */
+
+.animate-float-slow {
+  animation: float-slow 15s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 18s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite;
+}
+
+.animate-fade-in-down {
+  animation: fade-in-down 0.6s ease-out both;
+}
+
+.animate-ping-slow {
+  animation: ping-slow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-ping-slower {
+  animation: ping-slower 3s cubic-bezier(0, 0, 0.2, 1) infinite 0.5s;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(182, 240, 92, 0.1) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease-in-out infinite;
+}
+
+/* Progress bar animation for video section */
+@keyframes progress-bar {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.animate-progress-bar {
+  animation: progress-bar 20s linear infinite;
+}
